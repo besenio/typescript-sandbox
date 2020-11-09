@@ -1,0 +1,18 @@
+Core Types
+- number
+- string
+- boolean (no truthy or falsy values)
+- object
+
+Type Casing
+In TypeScript, you work with types like string or number all the time.
+Important: It is string and number (etc.), NOT String, Number, etc.
+The core primitive types in TypeScript are all lowercase!
+
+Types allow you to detect if data of a wrong type is used or pass around, hence you can avoid unexpected runtime errors.
+
+Assigning a boolean to a variable which was assigned a "string" types is not allowed and will yield a compilation error.
+
+TypeScript would be able to infer the type (and hence you should omit ":number") but here, we actually also have an explicit type assignment.
+
+JS has no compilation step but at runtime, you can check for certain types (e.g. in if conditions). TS on the other hand allows you to catch certain errors during development since it checks types during compilation as well.
