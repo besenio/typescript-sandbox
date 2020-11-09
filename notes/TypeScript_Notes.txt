@@ -1,8 +1,11 @@
 Core Types
-- number
-- string
-- boolean (no truthy or falsy values)
-- object
+- number: all numbers, no differentiation between integers or floats
+- string: all text values
+- boolean: just true or false, no 'truthy' or 'falsy' values)
+- object: any JavaScript object, more specific types (type of object) are possible
+- Array: any JavaScript array, type can be flexible or strict (regarding the element types)
+- Tuple: added by TypeScript: fixed-length and fixed-type array
+- Enum: added by TypeScript: automatically enumerated global constant identifiers
 
 Type Casing
 In TypeScript, you work with types like string or number all the time.
@@ -16,3 +19,25 @@ Assigning a boolean to a variable which was assigned a "string" types is not all
 TypeScript would be able to infer the type (and hence you should omit ":number") but here, we actually also have an explicit type assignment.
 
 JS has no compilation step but at runtime, you can check for certain types (e.g. in if conditions). TS on the other hand allows you to catch certain errors during development since it checks types during compilation as well.
+
+Let's say you have this JavaScript object:
+const product = {
+  id: 'abc1',
+  price: 12.99,
+  tags: ['great-offer', 'hot-and-new'],
+  details: {
+    title: 'Red Carpet',
+    description: 'A great carpet - almost brand-new!'
+  }
+}
+
+This would be the type of such an object:
+{
+  id: string;
+  price: number;
+  tags: string[],
+  details: {
+    title: string;
+    description: string;
+  }
+}
