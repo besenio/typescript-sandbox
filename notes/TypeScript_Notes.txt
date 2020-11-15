@@ -6,6 +6,7 @@ Core Types
 - Array: any JavaScript array, type can be flexible or strict (regarding the element types)
 - Tuple: added by TypeScript: fixed-length and fixed-type array
 - Enum: added by TypeScript: automatically enumerated global constant identifiers
+- Any: any kind of value, no specific type assignment
 
 Type Casing
 In TypeScript, you work with types like string or number all the time.
