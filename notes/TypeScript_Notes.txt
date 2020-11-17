@@ -1,3 +1,5 @@
+https://www.typescriptlang.org/docs/handbook/basic-types.html
+
 Core Types
 - number: all numbers, no differentiation between integers or floats
 - string: all text values
