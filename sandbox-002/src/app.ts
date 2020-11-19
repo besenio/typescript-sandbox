@@ -1,1 +1,3 @@
-// Code goes here!
+const userName = 'Kevin';
+
+let age = 30;
