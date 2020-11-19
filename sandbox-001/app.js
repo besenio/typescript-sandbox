@@ -1,3 +1,5 @@
 "use strict";
-var userName2 = 'Kevin';
-console.log(userName2);
+var button = document.querySelector('button');
+button.addEventListener('click', function () {
+    console.log('Clicked!');
+});
