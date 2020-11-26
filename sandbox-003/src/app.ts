@@ -41,6 +41,7 @@ class AccountingDepartment extends Department {
    private lastReport: string;
 
    // getter
+   // getters have to return something
    get mostRecentReport() {
       if (this.lastReport) {
          return this.lastReport;
