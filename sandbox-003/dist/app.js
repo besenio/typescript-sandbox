@@ -27,6 +27,12 @@ class AccountingDepartment extends Department {
         super(id, 'IT');
         this.reports = reports;
     }
+    addEmployee(name) {
+        if (name === 'Kevin') {
+            return;
+        }
+        this.employees.push(name);
+    }
     addReport(text) {
         this.reports.push(text);
     }
@@ -42,5 +48,8 @@ it.printEmployeeInformation();
 console.log(it);
 const accounting = new AccountingDepartment('d2', []);
 accounting.addReport('Something went wrong...');
+accounting.addEmployee('Kevin');
+accounting.addEmployee('Andrew');
 accounting.printReports();
+accounting.printEmployeeInformation();
 //# sourceMappingURL=app.js.map

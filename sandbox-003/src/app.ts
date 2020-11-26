@@ -4,7 +4,8 @@ class Department {
    // private name: string;
    // can make variables or functions private
    // private is only made available to typescript
-   private employees: string[] = [];
+   // protected is different from private, protected can be used in class that extends from its class
+   protected employees: string[] = [];
 
    // shorthand initialization
    constructor(private readonly id: string, public name: string) {
@@ -41,6 +42,13 @@ class AccountingDepartment extends Department {
       super(id, 'IT');
    }
 
+   addEmployee(name: string) {
+      if (name === 'Kevin') {
+         return;
+      }
+      this.employees.push(name);
+   }
+
    addReport(text: string) {
       this.reports.push(text);
    }
@@ -68,7 +76,11 @@ const accounting = new AccountingDepartment('d2', []);
 
 accounting.addReport('Something went wrong...');
 
+accounting.addEmployee('Kevin');
+accounting.addEmployee('Andrew');
+
 accounting.printReports();
+accounting.printEmployeeInformation();
 
 // const accountingCopy = { name: 'DUMMY', describe: it.describe };
 
