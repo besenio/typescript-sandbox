@@ -1,16 +1,20 @@
 class Department {
-   name: string;
+   // field definitions
+   // private id: string;
+   // private name: string;
    // can make variables or functions private
    // private is only made available to typescript
    private employees: string[] = [];
 
-   constructor(n: string) {
-      this.name = n;
+   // shorthand initialization
+   constructor(private id: string, public name: string) {
+      // this.id = id;
+      // this.name = n;
    }
 
    // this as a parameter to be more specific
    describe(this: Department) {
-      console.log('Department: ' + this.name);
+      console.log(`Department (${this.id}): ${this.name}`);
    }
 
    addEmployee(employee: string) {
@@ -23,12 +27,13 @@ class Department {
    }
 }
 
-const accounting = new Department('Accounting');
+const accounting = new Department('d1', 'Accounting');
 
 accounting.addEmployee('Kevin');
 accounting.addEmployee('Manu');
 
 // can't be added because employees is private
+// below should be avoided
 // accounting.employees[2] = 'Andrew';
 
 accounting.describe();
