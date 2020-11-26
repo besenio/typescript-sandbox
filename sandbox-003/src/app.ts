@@ -1,13 +1,13 @@
 class Department {
    // field definitions
-   // private id: string;
+   // private readonly id: string;
    // private name: string;
    // can make variables or functions private
    // private is only made available to typescript
    private employees: string[] = [];
 
    // shorthand initialization
-   constructor(private id: string, public name: string) {
+   constructor(private readonly id: string, public name: string) {
       // this.id = id;
       // this.name = n;
    }
