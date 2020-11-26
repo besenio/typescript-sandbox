@@ -1,4 +1,8 @@
 class Department {
+   // static property
+   // static is detached from the class instance, cannot be accessed from non-static parts
+   // can't be accessed with this keyword, will need to use the class name
+   static fiscalYear = 2020;
    // field definitions
    // private readonly id: string;
    // private name: string;
@@ -11,6 +15,11 @@ class Department {
    constructor(private readonly id: string, public name: string) {
       // this.id = id;
       // this.name = n;
+   }
+
+   // static method
+   static createEmployee(name: string) {
+      return { name: name };
    }
 
    // this as a parameter to be more specific
@@ -78,6 +87,10 @@ class AccountingDepartment extends Department {
       console.log(this.reports);
    }
 }
+
+// createEmployee is static, no need for new
+const employee1 = Department.createEmployee('Kevin')
+console.log(employee1, Department.fiscalYear);
 
 const it = new ITDepartment('d1', ['Kevin']);
 
