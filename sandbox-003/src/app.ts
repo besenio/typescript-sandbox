@@ -1,3 +1,15 @@
+// type AddFn = (a: number, b: number) => number;
+// interface as a custom function type
+interface AddFn {
+   (a: number, b: number): number;
+}
+
+let add: AddFn;
+
+add = (n1: number, n2: number) => {
+   return n1 + n2;
+}
+
 // interface only available in typescript
 // interface dictates how an object should look like
 // can't have values
