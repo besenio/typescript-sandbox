@@ -1,9 +1,15 @@
 // interface only available in typescript
 // interface dictates how an object should look like
 // can't have values
-interface Greetable {
-   name: string;
+interface Named {
+      // won't be able to modify read-only
+   readonly name: string;
+}
 
+// Greetable will also have what Named has
+// classes can only inherit from one class
+// interfaces can inherity from multiple interfaces, comma seperated
+interface Greetable extends Named {
    // return type is void
    greet(phrase: string): void;
 }
@@ -25,7 +31,7 @@ class Person implements Greetable {
 // interfaces can be used as a type
 let user1: Greetable;
 
-user1 = new Person('Kevin')
+user1 = new Person('Kevin');
 
 user1.greet('Hello');
 console.log(user1);
