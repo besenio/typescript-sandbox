@@ -109,3 +109,18 @@ function moveAnimal(animal: Animal) {
 }
 
 moveAnimal({type: 'bird', flyingSpeed: 10});
+
+// type casting, add angle brackets
+// the exclamation point lets us know that what ever is in front of it is never null
+// const userInputElement = <HTMLInputElement>document.getElementById('user-input')!;
+// same as above
+const userInputElement = document.getElementById('user-input')! as HTMLInputElement;
+
+userInputElement.value = 'Hi there!';
+
+// aternative to using the exclamation point above if we are not sure if what ever is in front of the exclamation point is null or not
+// const userInputElement = document.getElementById('user-input');
+
+// if (userInputElement) {
+//    (userInputElement as HTMLInputElement).value = 'Hi there!';
+// }
