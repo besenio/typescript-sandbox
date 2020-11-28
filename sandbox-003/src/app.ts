@@ -14,8 +14,11 @@ add = (n1: number, n2: number) => {
 // interface dictates how an object should look like
 // can't have values
 interface Named {
-      // won't be able to modify read-only
-   readonly name: string;
+   // won't be able to modify read-only
+   readonly name?: string;
+   // can add a question mark at the end of properties or methods
+   // optional property might exists in other classes that implements this interface
+   outputName?: string;
 }
 
 // Greetable will also have what Named has
@@ -28,22 +31,29 @@ interface Greetable extends Named {
 
 // can implement multiple interfaces, comma seperated
 class Person implements Greetable {
-   name: string;
+   name?: string;
    age = 100;
 
-   constructor(n: string) {
-      this.name = n;
+   // add question mark or optional parameters, this will default to undefined
+   constructor(n?: string) {
+      if (n) {
+         this.name = n;
+      }
    }
 
    greet(phrase: string) {
-      console.log(phrase + ' ' + this.name);
+      if (this.name) {
+         console.log(phrase + ' ' + this.name);
+      } else {
+         console.log('Hi!')
+      }
    }
 }
 
 // interfaces can be used as a type
 let user1: Greetable;
 
-user1 = new Person('Kevin');
+user1 = new Person();
 
 user1.greet('Hello');
 console.log(user1);
