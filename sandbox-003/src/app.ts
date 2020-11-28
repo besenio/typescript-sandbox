@@ -12,7 +12,7 @@ add = (n1: number, n2: number) => {
 
 // interface only available in typescript
 // interface dictates how an object should look like
-// can't have values
+// can't have values, can't store arbitrary types
 interface Named {
    // won't be able to modify read-only
    readonly name?: string;
