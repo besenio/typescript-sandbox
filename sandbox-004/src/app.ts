@@ -124,3 +124,16 @@ userInputElement.value = 'Hi there!';
 // if (userInputElement) {
 //    (userInputElement as HTMLInputElement).value = 'Hi there!';
 // }
+
+// index types, flexible code, don't know the property name or property count
+interface ErrorContainer { // {email: 'Not a valid email', username: 'Must start with a character'}
+   // square brackets for index types
+   // can't use boolean for prop type
+   // the prop type will be restricted to string in this example, numbers would cause an error
+   [prop: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+   email: 'Not a valid email!',
+   username: 'Must start with a capital character!'
+};
