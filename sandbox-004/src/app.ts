@@ -45,6 +45,20 @@ function add(a: Combinable, b: Combinable) {
 const result = add('Kevin', 'Besenio');
 result.split(' ');
 
+// optional chaining
+const fetchedUserData = {
+   id: 'u1',
+   name: 'Kevin',
+   // job: { title: 'CEO', description: 'My own company' }
+};
+
+// pretending we're fetching data from a http requests and job is unknown
+// this is javascripts way of finding out and avoiding runtime errors
+console.log(fetchedUserData.job && fetchedUserData.job.title);
+// typescript solves the issue above with optional chaining
+// checks if fetchedUserData exist before checking job, so on and so forth
+console.log(fetchedUserData?.job?.title);
+
 // type UnknownEmployee = Employee | Admin;
 
 // // type guard if in check
