@@ -49,7 +49,7 @@ result.split(' ');
 const fetchedUserData = {
    id: 'u1',
    name: 'Kevin',
-   // job: { title: 'CEO', description: 'My own company' }
+   job: { title: 'CEO', description: 'My own company' }
 };
 
 // pretending we're fetching data from a http requests and job is unknown
@@ -59,8 +59,18 @@ console.log(fetchedUserData.job && fetchedUserData.job.title);
 // checks if fetchedUserData exist before checking job, so on and so forth
 console.log(fetchedUserData?.job?.title);
 
+// nullish coalescing helps find null values
+const userInput = '';
+
+const storedData = userInput || 'DEFAULT';
+const storedData2 = userInput ?? 'DEFAULT';
+
+console.log(storedData);
+console.log(storedData2);
+
 // type UnknownEmployee = Employee | Admin;
 
+// // type guard checks at runtime, checking types before you try to do something with the values
 // // type guard if in check
 // function printEmployeeInformation(emp: UnknownEmployee) {
 //    console.log('Name: ' + emp.name);
