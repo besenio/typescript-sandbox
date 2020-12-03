@@ -27,6 +27,10 @@ type Numeric = number | boolean;
 // intersection types
 type Universal = Combinable & Numeric;
 
+// function overloads with numbers
+function add(a: number, b: number): number;
+// function overloads with string
+function add(a: string, b: string): string;
 // type guard using typeof
 function add(a: Combinable, b: Combinable) {
    if (typeof a === 'string' || typeof b === 'string') {
@@ -35,105 +39,111 @@ function add(a: Combinable, b: Combinable) {
    return a + b;
 }
 
-type UnknownEmployee = Employee | Admin;
+// result will return a string, but typescript only knows string or number, split won't work
+// we can type cast and tell typescript what type the return value is with 'as string', but not optimal
 
-// type guard if in check
-function printEmployeeInformation(emp: UnknownEmployee) {
-   console.log('Name: ' + emp.name);
-   if ('privileges' in emp) {
-      console.log('Privileges: ' + emp.privileges);
-   }
-   if ('startDate' in emp) {
-      console.log('Start Date: ' + emp.startDate);
-   }
-}
+const result = add('Kevin', 'Besenio');
+result.split(' ');
 
-printEmployeeInformation(e1);
+// type UnknownEmployee = Employee | Admin;
 
-// instanceof type guard
-class Car {
-   drive() {
-      console.log('Driving a car...');
-   }
-}
-
-class Truck {
-   drive() {
-      console.log('Driving a truck...');
-   }
-
-   loadCargo(amount: number) {
-      console.log('Loading cargo...' + amount);
-   }
-}
-
-type Vehicle = Car | Truck;
-
-const v1 = new Car();
-const v2 = new Truck();
-
-function useVehicle(vehicle: Vehicle) {
-   vehicle.drive();
-   if (vehicle instanceof Truck) {
-      vehicle.loadCargo(1000);
-   }
-}
-
-useVehicle(v1);
-useVehicle(v2);
-
-// discriminated unions
-interface Bird {
-   type: 'bird';
-   flyingSpeed: number;
-}
-
-interface Horse {
-   type: 'horse';
-   runningSpeed: number;
-}
-
-type Animal = Bird | Horse;
-
-function moveAnimal(animal: Animal) {
-   let speed;
-   switch (animal.type) {
-      case 'bird':
-         speed = animal.flyingSpeed;
-         break;
-      case 'horse':
-         speed = animal.runningSpeed;
-         break;
-   }
-   console.log('Moving at speed: ' + speed);
-}
-
-moveAnimal({type: 'bird', flyingSpeed: 10});
-
-// type casting, add angle brackets
-// the exclamation point lets us know that what ever is in front of it is never null
-// const userInputElement = <HTMLInputElement>document.getElementById('user-input')!;
-// same as above
-const userInputElement = document.getElementById('user-input')! as HTMLInputElement;
-
-userInputElement.value = 'Hi there!';
-
-// aternative to using the exclamation point above if we are not sure if what ever is in front of the exclamation point is null or not
-// const userInputElement = document.getElementById('user-input');
-
-// if (userInputElement) {
-//    (userInputElement as HTMLInputElement).value = 'Hi there!';
+// // type guard if in check
+// function printEmployeeInformation(emp: UnknownEmployee) {
+//    console.log('Name: ' + emp.name);
+//    if ('privileges' in emp) {
+//       console.log('Privileges: ' + emp.privileges);
+//    }
+//    if ('startDate' in emp) {
+//       console.log('Start Date: ' + emp.startDate);
+//    }
 // }
 
-// index types, flexible code, don't know the property name or property count
-interface ErrorContainer { // {email: 'Not a valid email', username: 'Must start with a character'}
-   // square brackets for index types
-   // can't use boolean for prop type
-   // the prop type will be restricted to string in this example, numbers would cause an error
-   [prop: string]: string;
-}
+// printEmployeeInformation(e1);
 
-const errorBag: ErrorContainer = {
-   email: 'Not a valid email!',
-   username: 'Must start with a capital character!'
-};
+// // instanceof type guard
+// class Car {
+//    drive() {
+//       console.log('Driving a car...');
+//    }
+// }
+
+// class Truck {
+//    drive() {
+//       console.log('Driving a truck...');
+//    }
+
+//    loadCargo(amount: number) {
+//       console.log('Loading cargo...' + amount);
+//    }
+// }
+
+// type Vehicle = Car | Truck;
+
+// const v1 = new Car();
+// const v2 = new Truck();
+
+// function useVehicle(vehicle: Vehicle) {
+//    vehicle.drive();
+//    if (vehicle instanceof Truck) {
+//       vehicle.loadCargo(1000);
+//    }
+// }
+
+// useVehicle(v1);
+// useVehicle(v2);
+
+// // discriminated unions
+// interface Bird {
+//    type: 'bird';
+//    flyingSpeed: number;
+// }
+
+// interface Horse {
+//    type: 'horse';
+//    runningSpeed: number;
+// }
+
+// type Animal = Bird | Horse;
+
+// function moveAnimal(animal: Animal) {
+//    let speed;
+//    switch (animal.type) {
+//       case 'bird':
+//          speed = animal.flyingSpeed;
+//          break;
+//       case 'horse':
+//          speed = animal.runningSpeed;
+//          break;
+//    }
+//    console.log('Moving at speed: ' + speed);
+// }
+
+// moveAnimal({type: 'bird', flyingSpeed: 10});
+
+// // type casting, add angle brackets
+// // the exclamation point lets us know that what ever is in front of it is never null
+// // const userInputElement = <HTMLInputElement>document.getElementById('user-input')!;
+// // same as above
+// const userInputElement = document.getElementById('user-input')! as HTMLInputElement;
+
+// userInputElement.value = 'Hi there!';
+
+// // aternative to using the exclamation point above if we are not sure if what ever is in front of the exclamation point is null or not
+// // const userInputElement = document.getElementById('user-input');
+
+// // if (userInputElement) {
+// //    (userInputElement as HTMLInputElement).value = 'Hi there!';
+// // }
+
+// // index types, flexible code, don't know the property name or property count
+// interface ErrorContainer { // {email: 'Not a valid email', username: 'Must start with a character'}
+//    // square brackets for index types
+//    // can't use boolean for prop type
+//    // the prop type will be restricted to string in this example, numbers would cause an error
+//    [prop: string]: string;
+// }
+
+// const errorBag: ErrorContainer = {
+//    email: 'Not a valid email!',
+//    username: 'Must start with a capital character!'
+// };
