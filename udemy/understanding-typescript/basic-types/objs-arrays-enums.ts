@@ -27,10 +27,10 @@ const person = {
    role: Role.ADMIN
 };
 
-// person.role.push('admin');
+// person.role.push('admin'); // this works for tuples
 // person.role[1] = 10;
 
-// person.role = [0, 'admin', 'user'];
+// person.role = [0, 'admin', 'user']; // this doesn't work for tuples
 
 let favoriteActivities: string[];
 favoriteActivities = ['Sports'];

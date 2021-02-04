@@ -1,5 +1,16 @@
 https://www.typescriptlang.org/docs/handbook/basic-types.html
 
+- sudo npm install -g typescript
+- tsc 'file name'
+
+- tsc 'file name' --watch
+- tsc 'file name' -w
+
+- tsc --init
+  - creates tsconfig.json file
+- tsc
+  - complies all ts files
+
 Core Types
 - number: all numbers, no differentiation between integers or floats
 - string: all text values
