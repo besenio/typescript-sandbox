@@ -23,7 +23,7 @@ interface Named {
 
 // Greetable will also have what Named has
 // classes can only inherit from one class
-// interfaces can inherity from multiple interfaces, comma seperated
+// interfaces can inherit from multiple interfaces, comma seperated
 interface Greetable extends Named {
    // return type is void
    greet(phrase: string): void;
