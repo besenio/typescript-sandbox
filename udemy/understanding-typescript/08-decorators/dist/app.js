@@ -17,14 +17,18 @@ function Logger(logString) {
 }
 function WithTemplate(template, hookId) {
     console.log('TEMPLATE FACTORY');
-    return function (constructor) {
-        console.log('Rendering template');
-        const hookEl = document.getElementById(hookId);
-        const p = new constructor();
-        if (hookEl) {
-            hookEl.innerHTML = template;
-            hookEl.querySelector('h1').textContent = p.name;
-        }
+    return function (originalConstructor) {
+        return class extends originalConstructor {
+            constructor(..._) {
+                super();
+                console.log('Rendering template');
+                const hookEl = document.getElementById(hookId);
+                if (hookEl) {
+                    hookEl.innerHTML = template;
+                    hookEl.querySelector('h1').textContent = this.name;
+                }
+            }
+        };
     };
 }
 let Person = class Person {
@@ -90,4 +94,30 @@ __decorate([
 ], Product.prototype, "getPriceWithTax", null);
 const p1 = new Product('Book 1', 19);
 const p2 = new Product('Book 2', 29);
+function Autobind(_, _2, descriptor) {
+    const originalMethod = descriptor.value;
+    const adjDescriptor = {
+        configurable: true,
+        enumerable: false,
+        get() {
+            const boundFn = originalMethod.bind(this);
+            return boundFn;
+        }
+    };
+    return adjDescriptor;
+}
+class Printer {
+    constructor() {
+        this.message = 'This works!';
+    }
+    showMessage() {
+        console.log(this.message);
+    }
+}
+__decorate([
+    Autobind
+], Printer.prototype, "showMessage", null);
+const p = new Printer();
+const button = document.querySelector('button');
+button.addEventListener('click', p.showMessage);
 //# sourceMappingURL=app.js.map
