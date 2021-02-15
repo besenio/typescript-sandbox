@@ -1,4 +1,5 @@
 // decorators
+// metaprogramming to add extra configuration, extra logic
 // executed when defined, not executed
 // function Logger(constructor: Function) {
 //    console.log('Logging...');
@@ -153,6 +154,7 @@ const registeredValidators: ValidatorConfig = {};
 function Required(target: any, propName: string) {
    registeredValidators[target.constructor.name] = {
       ...registeredValidators[target.constructor.name],
+      // [propName]: [...registeredValidators[target.constructor.name][propName], 'required']
       [propName]: ['required']
    }
 }
@@ -160,7 +162,8 @@ function Required(target: any, propName: string) {
 function PositiveNumber(target: any, propName: string) {
    registeredValidators[target.constructor.name] = {
       ...registeredValidators[target.constructor.name],
-      [propName]: ['positive']
+      // [propName]: [...registeredValidators[target.constructor.name][propName], 'positive']
+      [propName]: ['required']
    }
 }
 
