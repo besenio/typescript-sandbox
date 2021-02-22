@@ -55,3 +55,5 @@ This would be the type of such an object:
     description: string;
   }
 }
+
+npx create-react-app my-app --template typescript
